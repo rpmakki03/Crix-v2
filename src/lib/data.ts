@@ -92,7 +92,7 @@ export const cricketCards: CricketCard[] = [
   }
 ];
 
-export const packImage = '/assets/packs/image.png';
+export const packImage = '/assets/packs/image.jpg';
 
 export function getRandomCards(count: number = 1): CricketCard[] {
   const shuffled = [...cricketCards].sort(() => 0.5 - Math.random());
