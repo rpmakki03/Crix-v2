@@ -1,7 +1,7 @@
 "use client"
 
 import Image from 'next/image'
-import { CricketCard } from '@/lib/data'
+import type { CricketCard } from '@/lib/data'
 import { cn } from '@/lib/utils'
 
 interface CricketCardProps {
