@@ -4,6 +4,7 @@ import './globals.css'
 import { ThemeProvider } from '@/lib/theme-provider'
 import { UserProvider } from '@/lib/user-context'
 import { Navigation } from '@/components/navigation'
+import { Analytics } from '@vercel/analytics/next'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -35,6 +36,7 @@ export default function RootLayout({
             </div>
           </UserProvider>
         </ThemeProvider>
+        <Analytics />
       </body>
     </html>
   )
