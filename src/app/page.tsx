@@ -1,92 +1,74 @@
-import Link from 'next/link'
-import { CricketCardComponent } from '@/components/cricket-card'
+import { CricketCard } from '@/components/cricket-card'
 import { cricketCards } from '@/lib/data'
-import { ArrowRight, Package, ShoppingCart } from 'lucide-react'
+import { Button } from '@/components/ui/button'
+import Link from 'next/link'
 
 export default function HomePage() {
-  const featuredCards = cricketCards.slice(0, 4)
-
   return (
-    <div className="space-y-16">
+    <div className="space-y-12">
       {/* Hero Section */}
-      <section className="text-center space-y-8">
-        <div className="space-y-4">
-          <h1 className="text-4xl md:text-6xl font-bold text-foreground">
-            Welcome to{' '}
-            <span className="text-primary">Crix</span>
-          </h1>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            The ultimate cricket card trading platform. Collect legendary players, 
-            open packs, and build your dream team.
-          </p>
-        </div>
-        
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Link
-            href="/packs"
-            className="inline-flex items-center justify-center gap-2 px-8 py-3 bg-primary text-primary-foreground rounded-lg font-semibold hover:bg-primary/90 transition-colors"
-          >
-            <Package className="h-5 w-5" />
-            Open Packs
-            <ArrowRight className="h-4 w-4" />
+      <div className="text-center space-y-6">
+        <h1 className="text-5xl font-bold text-foreground">
+          Welcome to <span className="text-primary">Crix</span>
+        </h1>
+        <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+          The ultimate cricket card trading platform. Collect, trade, and build your dream team with legendary cricket players.
+        </p>
+        <div className="flex gap-4 justify-center">
+          <Link href="/packs">
+            <Button size="lg" className="text-lg px-8 py-6">
+              Open Packs
+            </Button>
           </Link>
-          <Link
-            href="/market"
-            className="inline-flex items-center justify-center gap-2 px-8 py-3 bg-secondary text-secondary-foreground rounded-lg font-semibold hover:bg-secondary/80 transition-colors"
-          >
-            <ShoppingCart className="h-5 w-5" />
-            Browse Market
-            <ArrowRight className="h-4 w-4" />
+          <Link href="/market">
+            <Button variant="outline" size="lg" className="text-lg px-8 py-6">
+              Browse Market
+            </Button>
           </Link>
         </div>
-      </section>
+      </div>
 
       {/* Featured Cards */}
-      <section className="space-y-8">
+      <div className="space-y-8">
         <div className="text-center">
           <h2 className="text-3xl font-bold text-foreground mb-4">
             Featured Players
           </h2>
           <p className="text-muted-foreground">
-            Discover legendary cricket players in our collection
+            Discover some of the most iconic cricket players
           </p>
         </div>
         
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {featuredCards.map((card) => (
-            <CricketCardComponent key={card.id} card={card} />
+          {cricketCards.slice(0, 8).map((card) => (
+            <CricketCard key={card.id} card={card} />
           ))}
         </div>
-      </section>
+      </div>
 
-      {/* Features Section */}
-      <section className="grid md:grid-cols-2 gap-8">
-        <div className="space-y-4">
-          <div className="flex items-center gap-3">
-            <div className="p-2 bg-primary/10 rounded-lg">
-              <Package className="h-6 w-6 text-primary" />
-            </div>
-            <h3 className="text-xl font-semibold text-foreground">Open Packs</h3>
+      {/* Quick Actions */}
+      <div className="grid md:grid-cols-3 gap-6">
+        <Link href="/packs" className="group">
+          <div className="bg-card border border-border rounded-lg p-6 hover:shadow-lg transition-all duration-200 group-hover:scale-105">
+            <h3 className="text-xl font-semibold text-foreground mb-2">Open Packs</h3>
+            <p className="text-muted-foreground">Get random cricket cards and build your collection</p>
           </div>
-          <p className="text-muted-foreground">
-            Purchase packs to get random cricket cards. Each pack contains 4 cards 
-            with varying rarities from common to legendary.
-          </p>
-        </div>
+        </Link>
         
-        <div className="space-y-4">
-          <div className="flex items-center gap-3">
-            <div className="p-2 bg-primary/10 rounded-lg">
-              <ShoppingCart className="h-6 w-6 text-primary" />
-            </div>
-            <h3 className="text-xl font-semibold text-foreground">Trade Cards</h3>
+        <Link href="/market" className="group">
+          <div className="bg-card border border-border rounded-lg p-6 hover:shadow-lg transition-all duration-200 group-hover:scale-105">
+            <h3 className="text-xl font-semibold text-foreground mb-2">Browse Market</h3>
+            <p className="text-muted-foreground">View all available cards and their prices</p>
           </div>
-          <p className="text-muted-foreground">
-            Browse the market to see all available cards and their current prices. 
-            Build your collection with your favorite players.
-          </p>
-        </div>
-      </section>
+        </Link>
+        
+        <Link href="/my-team" className="group">
+          <div className="bg-card border border-border rounded-lg p-6 hover:shadow-lg transition-all duration-200 group-hover:scale-105">
+            <h3 className="text-xl font-semibold text-foreground mb-2">Build Team</h3>
+            <p className="text-muted-foreground">Create your ultimate 5-a-side cricket team</p>
+          </div>
+        </Link>
+      </div>
     </div>
   )
 } 

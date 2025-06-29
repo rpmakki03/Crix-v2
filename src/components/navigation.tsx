@@ -19,6 +19,7 @@ export function Navigation() {
     { href: '/packs', label: 'Packs' },
     { href: '/market', label: 'Market' },
     { href: '/collection', label: 'My Collection' },
+    { href: '/my-team', label: 'My Team' },
   ]
 
   const handleConnect = (type: 'metamask' | 'phantom' | 'email', address?: string) => {
