@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import Image from 'next/image'
 import { CricketCard } from '@/components/cricket-card'
 import { packs, getRandomCards } from '@/lib/data'
@@ -12,6 +12,7 @@ export default function PacksPage() {
   const [isOpening, setIsOpening] = useState(false)
   const [selectedPack, setSelectedPack] = useState<string | null>(null)
   const { user, addCardToCollection } = useUser()
+  const openedCardsRef = useRef<HTMLDivElement>(null)
 
   const handleBuyPack = (packId: string) => {
     if (!user) {
@@ -38,6 +39,14 @@ export default function PacksPage() {
       // Add the cards to user's collection
       newCards.forEach(card => addCardToCollection(card))
       setIsOpening(false)
+      
+      // Auto-scroll to opened cards section
+      setTimeout(() => {
+        openedCardsRef.current?.scrollIntoView({ 
+          behavior: 'smooth',
+          block: 'start'
+        })
+      }, 100)
     }, 2000)
   }
 
@@ -75,46 +84,46 @@ export default function PacksPage() {
       )}
 
       {/* Packs Display */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
         {packs.map((pack) => (
           <div key={pack.id} className="relative group">
-            <div className="relative w-full h-96 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-2xl border-2 border-dashed border-primary/30 p-6 flex flex-col items-center justify-center">
+            <div className="relative w-full min-h-[420px] md:min-h-[480px] bg-gradient-to-br from-primary/20 to-secondary/20 rounded-2xl border-2 border-dashed border-primary/30 p-4 md:p-6 flex flex-col items-center justify-center">
               <Image
                 src={pack.image}
                 alt={pack.name}
-                width={180}
-                height={180}
-                className="object-contain mb-4"
+                width={160}
+                height={160}
+                className="object-contain mb-3 md:mb-4 w-32 h-32 md:w-40 md:h-40"
               />
-              <h3 className="text-xl font-semibold text-foreground mb-2">
+              <h3 className="text-lg md:text-xl font-semibold text-foreground mb-2 text-center">
                 {pack.name}
               </h3>
-              <p className="text-muted-foreground text-center mb-4">
+              <p className="text-muted-foreground text-center mb-3 md:mb-4 text-sm md:text-base">
                 {pack.description}
               </p>
               
               {/* Pack Features */}
-              <div className="space-y-2 mb-6 text-sm">
-                <div className="flex items-center gap-2">
-                  <Package className="h-4 w-4 text-primary" />
+              <div className="space-y-1 md:space-y-2 mb-4 md:mb-6 text-xs md:text-sm w-full">
+                <div className="flex items-center gap-2 justify-center">
+                  <Package className="h-3 w-3 md:h-4 md:w-4 text-primary flex-shrink-0" />
                   <span>{pack.cardCount} card{pack.cardCount > 1 ? 's' : ''}</span>
                 </div>
                 {pack.guaranteedCard && (
-                  <div className="flex items-center gap-2 text-green-600 dark:text-green-400">
-                    <Star className="h-4 w-4" />
-                    <span>Guaranteed {pack.guaranteedCard}</span>
+                  <div className="flex items-center gap-2 text-green-600 dark:text-green-400 justify-center">
+                    <Star className="h-3 w-3 md:h-4 md:w-4 flex-shrink-0" />
+                    <span className="text-center">Guaranteed {pack.guaranteedCard}</span>
                   </div>
                 )}
                 {pack.excludeRarities && (
-                  <div className="flex items-center gap-2 text-green-600 dark:text-green-400">
-                    <Star className="h-4 w-4" />
-                    <span>Guaranteed {pack.excludeRarities.length === 3 ? 'common' : pack.excludeRarities.join(', ')} player{pack.excludeRarities.length > 1 ? 's' : ''}</span>
+                  <div className="flex items-center gap-2 text-green-600 dark:text-green-400 justify-center">
+                    <Star className="h-3 w-3 md:h-4 md:w-4 flex-shrink-0" />
+                    <span className="text-center">Guaranteed {pack.excludeRarities.length === 3 ? 'common' : pack.excludeRarities.join(', ')} player{pack.excludeRarities.length > 1 ? 's' : ''}</span>
                   </div>
                 )}
                 {pack.guaranteedTeam && (
-                  <div className="flex items-center gap-2 text-green-600 dark:text-green-400">
-                    <Star className="h-4 w-4" />
-                    <span>Guaranteed {pack.guaranteedTeam} players</span>
+                  <div className="flex items-center gap-2 text-green-600 dark:text-green-400 justify-center">
+                    <Star className="h-3 w-3 md:h-4 md:w-4 flex-shrink-0" />
+                    <span className="text-center">Guaranteed {pack.guaranteedTeam} players</span>
                   </div>
                 )}
               </div>
@@ -123,21 +132,22 @@ export default function PacksPage() {
                 onClick={() => handleBuyPack(pack.id)}
                 disabled={isOpening || !user}
                 className="
-                  w-full inline-flex items-center justify-center gap-2 px-6 py-3
-                  bg-primary text-primary-foreground rounded-lg font-semibold
+                  w-full inline-flex items-center justify-center gap-2 px-4 md:px-6 py-3 md:py-3
+                  bg-primary text-primary-foreground rounded-lg font-semibold text-sm md:text-base
                   hover:bg-primary/90 transition-all duration-200
                   disabled:opacity-50 disabled:cursor-not-allowed
                   hover:shadow-lg hover:shadow-primary/25
+                  mt-auto
                 "
               >
                 {isOpening && selectedPack === pack.id ? (
                   <>
-                    <Sparkles className="h-5 w-5 animate-spin" />
+                    <Sparkles className="h-4 w-4 md:h-5 md:w-5 animate-spin" />
                     Opening...
                   </>
                 ) : (
                   <>
-                    <Package className="h-5 w-5" />
+                    <Package className="h-4 w-4 md:h-5 md:w-5" />
                     Buy Pack - ₹{pack.price}
                   </>
                 )}
@@ -149,7 +159,7 @@ export default function PacksPage() {
 
       {/* Opened Cards */}
       {openedCards.length > 0 && (
-        <div className="space-y-8">
+        <div ref={openedCardsRef} className="space-y-8">
           <div className="text-center">
             <h2 className="text-3xl font-bold text-foreground mb-4">
               Your Pack Contents
