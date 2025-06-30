@@ -422,6 +422,26 @@ export const cricketCards: CricketCard[] = [
     position: 'Batsman',
     team: 'England',
     rating: 78
+  },
+  {
+    id: '41',
+    name: 'Aiden Markram',
+    image: '/assets/Match Edition/Aiden Markram 96.jpg',
+    price: 999,
+    rarity: 'epic',
+    position: 'Batsman',
+    team: 'South Africa',
+    rating: 96
+  },
+  {
+    id: '42',
+    name: 'Rohit Sharma',
+    image: '/assets/Match Edition/Rohit Sharma 100.jpg',
+    price: 999,
+    rarity: 'legendary',
+    position: 'Batsman',
+    team: 'India',
+    rating: 100
   }
 ];
 
