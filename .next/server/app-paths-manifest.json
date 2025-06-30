@@ -1,6 +1,6 @@
 {
-  "/market/page": "app/market/page.js",
-  "/my-team/page": "app/my-team/page.js",
-  "/collection/page": "app/collection/page.js",
-  "/packs/page": "app/packs/page.js"
+  "/login/page": "app/login/page.js",
+  "/packs/page": "app/packs/page.js",
+  "/register/page": "app/register/page.js",
+  "/page": "app/page.js"
 }

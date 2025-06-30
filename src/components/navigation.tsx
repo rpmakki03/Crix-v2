@@ -1,7 +1,7 @@
 "use client"
 
 import Link from 'next/link'
-import { usePathname } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 import { useTheme } from 'next-themes'
 import { useUser } from '@/lib/user-context'
 import { WalletConnect } from './wallet-connect'
@@ -10,9 +10,11 @@ import { useState } from 'react'
 
 export function Navigation() {
   const pathname = usePathname()
+  const router = useRouter()
   const { theme, setTheme } = useTheme()
   const { user, connectUser, disconnectUser } = useUser()
   const [showWalletConnect, setShowWalletConnect] = useState(false)
+  const [showAuthChoice, setShowAuthChoice] = useState(false)
 
   const navItems = [
     { href: '/', label: 'Home' },
@@ -94,13 +96,42 @@ export function Navigation() {
                 </button>
               </div>
             ) : (
-              <button
-                onClick={() => setShowWalletConnect(!showWalletConnect)}
-                className="flex items-center space-x-2 px-4 py-2 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 transition-colors"
-              >
-                <Package className="h-4 w-4" />
-                <span>Connect Wallet</span>
-              </button>
+              <>
+                <button
+                  onClick={() => setShowAuthChoice(true)}
+                  className="flex items-center space-x-2 px-4 py-2 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 transition-colors"
+                >
+                  <Package className="h-4 w-4" />
+                  <span>Login</span>
+                </button>
+                {showAuthChoice && (
+                  <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40">
+                    <div className="bg-white dark:bg-gray-900 rounded-lg shadow-lg p-8 max-w-xs w-full space-y-6">
+                      <div className="text-center text-lg font-semibold mb-2">Already signed up?</div>
+                      <div className="flex flex-col gap-3">
+                        <button
+                          onClick={() => { setShowAuthChoice(false); window.location.href = '/login'; }}
+                          className="w-full px-4 py-2 bg-primary text-primary-foreground rounded-lg font-semibold hover:bg-primary/90 transition-colors"
+                        >
+                          Login
+                        </button>
+                        <button
+                          onClick={() => { setShowAuthChoice(false); window.location.href = '/register'; }}
+                          className="w-full px-4 py-2 bg-secondary text-secondary-foreground rounded-lg font-semibold hover:bg-secondary/80 transition-colors"
+                        >
+                          Register
+                        </button>
+                        <button
+                          onClick={() => setShowAuthChoice(false)}
+                          className="w-full px-4 py-2 bg-muted text-muted-foreground rounded-lg font-semibold hover:bg-muted/80 transition-colors"
+                        >
+                          Cancel
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </>
             )}
           </div>
         </div>
