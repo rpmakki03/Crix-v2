@@ -291,7 +291,7 @@ export const cricketCards: CricketCard[] = [
     rarity: 'epic',
     position: 'Bowler',
     team: 'Australia',
-    rating: 94
+    rating: 98
   },
   {
     id: '28',

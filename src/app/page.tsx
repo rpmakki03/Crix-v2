@@ -43,15 +43,15 @@ export default function HomePage() {
           {(() => {
             // Get the Mitchell Johnson card
             const mitchellJohnson = cricketCards.find(card => card.name === 'Mitchell Johnson');
-            // Get the top 8 highest rated players, excluding Aiden Markram and Mitchell Johnson
+            // Get the top 8 highest rated players, excluding Mitchell Johnson
             let topPlayers = cricketCards
-              .filter(card => card.name !== 'Aiden Markram' && card.name !== 'Mitchell Johnson')
+              .filter(card => card.name !== 'Mitchell Johnson')
               .slice()
               .sort((a, b) => b.rating - a.rating)
-              .slice(0, 7); // 7 because we'll add Mitchell Johnson
-            // Add Mitchell Johnson if found
+              .slice(0, 8);
+            // Add Mitchell Johnson at the end if found
             if (mitchellJohnson) {
-              topPlayers = [mitchellJohnson, ...topPlayers];
+              topPlayers = [...topPlayers.filter(card => card.id !== mitchellJohnson.id), mitchellJohnson];
             }
             return topPlayers.map((card) => (
               <CricketCard key={card.id} card={card} />
