@@ -105,7 +105,7 @@ export function Navigation() {
                   <span>Login</span>
                 </button>
                 {showAuthChoice && (
-                  <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40">
+                  <div className="fixed inset-0 z-50 flex items-center justify-center min-h-screen bg-black/40">
                     <div className="bg-white dark:bg-gray-900 rounded-lg shadow-lg px-6 py-4 max-w-xs w-full flex flex-col items-center justify-center">
                       <div className="text-center text-lg font-semibold mb-4">Already signed up?</div>
                       <div className="flex flex-col gap-3 w-full">
