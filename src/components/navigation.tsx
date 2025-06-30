@@ -106,9 +106,9 @@ export function Navigation() {
                 </button>
                 {showAuthChoice && (
                   <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40">
-                    <div className="bg-white dark:bg-gray-900 rounded-lg shadow-lg p-8 max-w-xs w-full space-y-6">
+                    <div className="bg-white dark:bg-gray-900 rounded-lg shadow-lg p-8 max-w-xs w-full space-y-6 flex flex-col items-center justify-center">
                       <div className="text-center text-lg font-semibold mb-2">Already signed up?</div>
-                      <div className="flex flex-col gap-3">
+                      <div className="flex flex-col gap-3 w-full">
                         <button
                           onClick={() => { setShowAuthChoice(false); window.location.href = '/login'; }}
                           className="w-full px-4 py-2 bg-primary text-primary-foreground rounded-lg font-semibold hover:bg-primary/90 transition-colors"
