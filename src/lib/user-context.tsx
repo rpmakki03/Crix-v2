@@ -1,6 +1,6 @@
 "use client"
 
-import { createContext, useContext, useState, ReactNode } from 'react'
+import { createContext, useContext, useState, ReactNode, useEffect } from 'react'
 import { CricketCard } from './data'
 
 interface User {
@@ -24,6 +24,14 @@ export function UserProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<User | null>(null)
   const [userCards, setUserCards] = useState<CricketCard[]>([])
 
+  // Restore user from localStorage on mount
+  useEffect(() => {
+    const savedUser = localStorage.getItem('crix_user')
+    if (savedUser) {
+      setUser(JSON.parse(savedUser))
+    }
+  }, [])
+
   const connectUser = (type: 'metamask' | 'phantom' | 'email', address?: string) => {
     const newUser: User = {
       type,
@@ -31,11 +39,13 @@ export function UserProvider({ children }: { children: ReactNode }) {
       ...(type === 'email' && address && { email: address })
     }
     setUser(newUser)
+    localStorage.setItem('crix_user', JSON.stringify(newUser))
   }
 
   const disconnectUser = () => {
     setUser(null)
     setUserCards([])
+    localStorage.removeItem('crix_user')
   }
 
   const addCardToCollection = (card: CricketCard) => {
