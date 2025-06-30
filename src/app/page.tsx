@@ -40,13 +40,23 @@ export default function HomePage() {
         </div>
         
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {cricketCards
-            .slice()
-            .sort((a, b) => b.rating - a.rating)
-            .slice(0, 8)
-            .map((card) => (
+          {(() => {
+            // Get the Mitchell Johnson card
+            const mitchellJohnson = cricketCards.find(card => card.name === 'Mitchell Johnson');
+            // Get the top 8 highest rated players, excluding Aiden Markram and Mitchell Johnson
+            let topPlayers = cricketCards
+              .filter(card => card.name !== 'Aiden Markram' && card.name !== 'Mitchell Johnson')
+              .slice()
+              .sort((a, b) => b.rating - a.rating)
+              .slice(0, 7); // 7 because we'll add Mitchell Johnson
+            // Add Mitchell Johnson if found
+            if (mitchellJohnson) {
+              topPlayers = [mitchellJohnson, ...topPlayers];
+            }
+            return topPlayers.map((card) => (
               <CricketCard key={card.id} card={card} />
-            ))}
+            ));
+          })()}
         </div>
       </div>
 
