@@ -14,14 +14,14 @@ export default function HomePage() {
         <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
           The ultimate cricket card trading platform. Collect, trade, and build your dream team with legendary cricket players.
         </p>
-        <div className="flex gap-4 justify-center">
+        <div className="flex gap-4 justify-center px-4 sm:px-0">
           <Link href="/packs">
-            <Button size="lg" className="text-lg px-8 py-6">
+            <Button size="lg" className="text-lg px-8 py-6 w-full max-w-xs">
               Open Packs
             </Button>
           </Link>
           <Link href="/market">
-            <Button variant="outline" size="lg" className="text-lg px-8 py-6">
+            <Button variant="outline" size="lg" className="text-lg px-8 py-6 w-full max-w-xs">
               Browse Market
             </Button>
           </Link>
