@@ -32,6 +32,27 @@ export function UserProvider({ children }: { children: ReactNode }) {
     }
   }, [])
 
+  // Restore userCards from localStorage when user changes
+  useEffect(() => {
+    if (user) {
+      const savedCards = localStorage.getItem(`crix_userCards_${user.type}_${user.address || user.email || ''}`)
+      if (savedCards) {
+        setUserCards(JSON.parse(savedCards))
+      } else {
+        setUserCards([])
+      }
+    } else {
+      setUserCards([])
+    }
+  }, [user])
+
+  // Save userCards to localStorage whenever they change
+  useEffect(() => {
+    if (user) {
+      localStorage.setItem(`crix_userCards_${user.type}_${user.address || user.email || ''}`, JSON.stringify(userCards))
+    }
+  }, [user, userCards])
+
   const connectUser = (type: 'metamask' | 'phantom' | 'email', address?: string) => {
     const newUser: User = {
       type,
@@ -40,12 +61,20 @@ export function UserProvider({ children }: { children: ReactNode }) {
     }
     setUser(newUser)
     localStorage.setItem('crix_user', JSON.stringify(newUser))
+    // Restore cards for this user
+    const savedCards = localStorage.getItem(`crix_userCards_${type}_${address || ''}`)
+    if (savedCards) {
+      setUserCards(JSON.parse(savedCards))
+    } else {
+      setUserCards([])
+    }
   }
 
   const disconnectUser = () => {
     setUser(null)
     setUserCards([])
     localStorage.removeItem('crix_user')
+    // Optionally, do not remove userCards from localStorage so they persist for next login
   }
 
   const addCardToCollection = (card: CricketCard) => {
