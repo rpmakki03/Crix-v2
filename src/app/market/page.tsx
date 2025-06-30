@@ -24,6 +24,12 @@ export default function MarketPage() {
 
   const teams = Array.from(new Set(cricketCards.map(card => card.team)))
 
+  // Shuffle cards on each render
+  function shuffle(array: typeof cricketCards) {
+    return array.slice().sort(() => Math.random() - 0.5)
+  }
+  const shuffledCards = shuffle(filteredCards)
+
   return (
     <div className="space-y-8">
       {/* Header */}
@@ -74,7 +80,7 @@ export default function MarketPage() {
 
       {/* Cards Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        {filteredCards.map((card) => (
+        {shuffledCards.map((card) => (
           <CricketCard key={card.id} card={card} />
         ))}
       </div>
