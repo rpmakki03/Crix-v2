@@ -8,7 +8,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Wallet, Package, Trophy } from 'lucide-react'
 
 export default function CollectionPage() {
-  const { user, userCards } = useUser()
+  const { user, userCards, removeCardFromCollection } = useUser()
   const [searchTerm, setSearchTerm] = useState('')
   const [selectedRarity, setSelectedRarity] = useState('all')
   const [selectedTeam, setSelectedTeam] = useState('all')
@@ -152,6 +152,12 @@ export default function CollectionPage() {
             {filteredCards.map((card, index) => (
               <div key={`${card.id}-${index}`} className="animate-in slide-in-from-bottom-4 duration-500" style={{ animationDelay: `${index * 100}ms` }}>
                 <CricketCard card={card} />
+                <button
+                  onClick={() => removeCardFromCollection(card.id)}
+                  className="mt-2 w-full px-3 py-2 bg-destructive text-destructive-foreground rounded text-sm font-semibold hover:bg-destructive/90 transition-colors"
+                >
+                  Remove
+                </button>
               </div>
             ))}
           </div>

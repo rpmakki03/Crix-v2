@@ -336,13 +336,12 @@ export const packs: Pack[] = [
     excludeRarities: ['rare', 'epic', 'legendary']
   },
   {
-    id: 'india-odi',
-    name: 'India ODI Pack',
+    id: 'standard',
+    name: 'Standard Pack',
     price: 399,
     image: '/assets/packs/standard.jpg',
-    description: '2 cards, guaranteed Indian players',
-    cardCount: 2,
-    guaranteedTeam: 'India'
+    description: '2 cards, any country',
+    cardCount: 2
   },
   {
     id: 'ultimate',
@@ -373,8 +372,11 @@ export function getRandomCards(count: number = 1, options?: {
     );
   }
   
-  // Exclude cards with rating > 95
-  availableCards = availableCards.filter(card => card.rating <= 95);
+  // Exclude cards with rating > 95, but for legendary, max is 96
+  availableCards = availableCards.filter(card => {
+    if (card.rarity === 'legendary') return card.rating <= 96;
+    return card.rating <= 95;
+  });
   
   // If there's a guaranteed card, include it
   if (options?.guaranteedCard) {
