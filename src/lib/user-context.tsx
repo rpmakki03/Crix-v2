@@ -2,6 +2,7 @@
 
 import { createContext, useContext, useState, ReactNode, useEffect } from 'react'
 import { CricketCard } from './data'
+import { supabase } from './utils'
 
 interface User {
   type: 'metamask' | 'phantom' | 'email'
@@ -52,6 +53,22 @@ export function UserProvider({ children }: { children: ReactNode }) {
       localStorage.setItem(`crix_userCards_${user.type}_${user.address || user.email || ''}`, JSON.stringify(userCards))
     }
   }, [user, userCards])
+
+  // Listen for Supabase Auth state changes
+  useEffect(() => {
+    const { data: listener } = supabase.auth.onAuthStateChange((event, session) => {
+      if (session && session.user) {
+        setUser({ type: 'email', email: session.user.email })
+        localStorage.setItem('crix_user', JSON.stringify({ type: 'email', email: session.user.email }))
+      } else {
+        setUser(null)
+        localStorage.removeItem('crix_user')
+      }
+    })
+    return () => {
+      listener.subscription.unsubscribe()
+    }
+  }, [])
 
   const connectUser = (type: 'metamask' | 'phantom' | 'email', address?: string) => {
     const newUser: User = {
