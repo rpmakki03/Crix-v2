@@ -43,9 +43,9 @@ export default function HomePage() {
           {(() => {
             // Get the Mitchell Johnson card
             const mitchellJohnson = cricketCards.find(card => card.name === 'Mitchell Johnson');
-            // Get the top 8 highest rated players, excluding Mitchell Johnson
+            // Get the top 8 highest rated players, excluding Mitchell Johnson and Aiden Markram
             let topPlayers = cricketCards
-              .filter(card => card.name !== 'Mitchell Johnson')
+              .filter(card => card.name !== 'Mitchell Johnson' && card.name !== 'Aiden Markram')
               .slice()
               .sort((a, b) => b.rating - a.rating)
               .slice(0, 8);
