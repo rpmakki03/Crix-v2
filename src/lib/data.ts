@@ -469,7 +469,8 @@ export const packs: Pack[] = [
     price: 999,
     image: '/assets/packs/Ultimate.jpg',
     description: '1 random card, all rarities possible',
-    cardCount: 1
+    cardCount: 1,
+    excludeRarities: ['common']
   }
 ];
 
@@ -492,7 +493,7 @@ export function getRandomCards(count: number = 1, options?: {
     );
   }
   
-  // Exclude cards with rating > 95, but for legendary, max is 96
+  // Exclude cards with rating > 95, but for Ultimate, max is 96
   availableCards = availableCards.filter(card => {
     if (card.rarity === 'legendary') return card.rating <= 96;
     return card.rating <= 95;
