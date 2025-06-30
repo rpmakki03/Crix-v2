@@ -246,12 +246,12 @@ export const cricketCards: CricketCard[] = [
   {
     id: '23',
     name: 'Ben Stokes',
-    image: '/assets/England/Ben Stokes 91.jpg',
+    image: '/assets/Match Edition/Ben Stokes 98.jpg',
     price: 999,
-    rarity: 'epic',
+    rarity: 'legendary',
     position: 'All-rounder',
     team: 'England',
-    rating: 91
+    rating: 98
   },
   {
     id: '24',
@@ -262,6 +262,66 @@ export const cricketCards: CricketCard[] = [
     position: 'Wicket-keeper',
     team: 'South Africa',
     rating: 80
+  },
+  {
+    id: '25',
+    name: 'Glenn Maxwell',
+    image: '/assets/Match Edition/Maxwell 98.jpg',
+    price: 999,
+    rarity: 'legendary',
+    position: 'All-rounder',
+    team: 'Australia',
+    rating: 98
+  },
+  {
+    id: '26',
+    name: 'Yuvraj Singh',
+    image: '/assets/Match Edition/Yuvraj Singh 98.jpg',
+    price: 999,
+    rarity: 'legendary',
+    position: 'All-rounder',
+    team: 'India',
+    rating: 98
+  },
+  {
+    id: '27',
+    name: 'Mitchell Johnson',
+    image: '/assets/Match Edition/Mitchell Jhonson.jpg',
+    price: 999,
+    rarity: 'epic',
+    position: 'Bowler',
+    team: 'Australia',
+    rating: 94
+  },
+  {
+    id: '28',
+    name: 'Kumar Sangakkara',
+    image: '/assets/Match Edition/Kumar Sangakara 95.jpg',
+    price: 999,
+    rarity: 'epic',
+    position: 'Wicket-keeper',
+    team: 'Sri Lanka',
+    rating: 95
+  },
+  {
+    id: '29',
+    name: 'Travis Head',
+    image: '/assets/Austrailia/Travis Head 93.jpg',
+    price: 999,
+    rarity: 'epic',
+    position: 'Batsman',
+    team: 'Australia',
+    rating: 93
+  },
+  {
+    id: '30',
+    name: 'Chris Gayle',
+    image: '/assets/Legends/Chris Gayle.jpg',
+    price: 999,
+    rarity: 'legendary',
+    position: 'Batsman',
+    team: 'Legends',
+    rating: 97
   }
 ];
 
