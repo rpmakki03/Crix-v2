@@ -322,6 +322,106 @@ export const cricketCards: CricketCard[] = [
     position: 'Batsman',
     team: 'Legends',
     rating: 97
+  },
+  {
+    id: '31',
+    name: 'Shoaib Bahir',
+    image: '/assets/England/Shoaib Bahir 76.jpg',
+    price: 999,
+    rarity: 'common',
+    position: 'Bowler',
+    team: 'England',
+    rating: 76
+  },
+  {
+    id: '32',
+    name: 'Josh Tongue',
+    image: '/assets/England/Josh Tongue 78.jpg',
+    price: 999,
+    rarity: 'common',
+    position: 'Bowler',
+    team: 'England',
+    rating: 78
+  },
+  {
+    id: '33',
+    name: 'Brydon Carse',
+    image: '/assets/England/Brydon Carse 76.jpg',
+    price: 999,
+    rarity: 'common',
+    position: 'Bowler',
+    team: 'England',
+    rating: 76
+  },
+  {
+    id: '34',
+    name: 'Chris Woakes',
+    image: '/assets/England/Chris Woakes 86.jpg',
+    price: 999,
+    rarity: 'rare',
+    position: 'All-rounder',
+    team: 'England',
+    rating: 86
+  },
+  {
+    id: '35',
+    name: 'Jamie Smith',
+    image: '/assets/England/Jamie Smith 75.jpg',
+    price: 999,
+    rarity: 'common',
+    position: 'Wicket-keeper',
+    team: 'England',
+    rating: 75
+  },
+  {
+    id: '36',
+    name: 'Harry Brook',
+    image: '/assets/England/Harry Brook 83.jpg',
+    price: 999,
+    rarity: 'rare',
+    position: 'Batsman',
+    team: 'England',
+    rating: 83
+  },
+  {
+    id: '37',
+    name: 'Joe Root',
+    image: '/assets/England/Joe Root 90.jpg',
+    price: 999,
+    rarity: 'rare',
+    position: 'Batsman',
+    team: 'England',
+    rating: 90
+  },
+  {
+    id: '38',
+    name: 'Ollie Pope',
+    image: '/assets/England/Ollie Pope 82.jpg',
+    price: 999,
+    rarity: 'rare',
+    position: 'Batsman',
+    team: 'England',
+    rating: 82
+  },
+  {
+    id: '39',
+    name: 'Ben Duckett',
+    image: '/assets/England/Ben Duckett 80.jpg',
+    price: 999,
+    rarity: 'common',
+    position: 'Batsman',
+    team: 'England',
+    rating: 80
+  },
+  {
+    id: '40',
+    name: 'Zack Crawley',
+    image: '/assets/England/Zack Crawley 78.jpg',
+    price: 999,
+    rarity: 'common',
+    position: 'Batsman',
+    team: 'England',
+    rating: 78
   }
 ];
 
