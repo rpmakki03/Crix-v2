@@ -40,13 +40,12 @@ export default function HomePage() {
         </div>
         
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {cricketCards
-            .slice()
-            .sort((a, b) => b.rating - a.rating)
-            .slice(0, 8)
-            .map((card) => (
+          {(() => {
+            const maxRating = Math.max(...cricketCards.map(card => card.rating));
+            return cricketCards.filter(card => card.rating === maxRating).map((card) => (
               <CricketCard key={card.id} card={card} />
-            ))}
+            ));
+          })()}
         </div>
       </div>
 
