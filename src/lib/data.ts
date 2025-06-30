@@ -373,6 +373,9 @@ export function getRandomCards(count: number = 1, options?: {
     );
   }
   
+  // Exclude cards with rating > 95
+  availableCards = availableCards.filter(card => card.rating <= 95);
+  
   // If there's a guaranteed card, include it
   if (options?.guaranteedCard) {
     const guaranteedCard = availableCards.find(card => card.name === options.guaranteedCard);
