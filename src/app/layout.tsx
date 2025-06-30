@@ -5,6 +5,7 @@ import { ThemeProvider } from '@/lib/theme-provider'
 import { UserProvider } from '@/lib/user-context'
 import { Navigation } from '@/components/navigation'
 import { Analytics } from '@vercel/analytics/next'
+import Link from 'next/link'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -30,6 +31,10 @@ export default function RootLayout({
           <UserProvider>
             <div className="min-h-screen bg-background">
               <Navigation />
+              <div className="flex justify-end gap-4 mb-4">
+                <Link href="/login" className="text-primary underline">Login</Link>
+                <Link href="/register" className="text-primary underline">Register</Link>
+              </div>
               <main className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
                 {children}
               </main>
