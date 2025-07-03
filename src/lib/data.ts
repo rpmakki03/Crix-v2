@@ -446,7 +446,7 @@ export const cricketCards: CricketCard[] = [
   {
     id: '43',
     name: 'Shubman Gill',
-    image: '/assets/Match Edition/Shubman Gill 99.png',
+    image: '/assets/Match Edition/Shubman Gill 99.jpg',
     price: 5000,
     rarity: 'legendary',
     position: 'Batsman',
