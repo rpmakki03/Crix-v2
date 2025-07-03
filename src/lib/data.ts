@@ -54,16 +54,6 @@ export const cricketCards: CricketCard[] = [
     rating: 92
   },
   {
-    id: '4',
-    name: 'Shubman Gill',
-    image: '/assets/ShubhmanGill.jpg',
-    price: 500,
-    rarity: 'rare',
-    position: 'Batsman',
-    team: 'India',
-    rating: 89
-  },
-  {
     id: '5',
     name: 'Mitchell Starc',
     image: '/assets/Starc.jpg',
@@ -142,16 +132,6 @@ export const cricketCards: CricketCard[] = [
     position: 'Bowler',
     team: 'India',
     rating: 93
-  },
-  {
-    id: '13',
-    name: 'Shubman Gill',
-    image: '/assets/India Baisc/Shubman Gill.jpg',
-    price: 500,
-    rarity: 'rare',
-    position: 'Batsman',
-    team: 'India',
-    rating: 89
   },
   {
     id: '14',
