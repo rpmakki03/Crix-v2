@@ -41,7 +41,7 @@ export default function RegisterPage() {
         </div>
         {error && <div className="text-red-600 text-sm">{error}</div>}
         {success && <div className="text-green-600 text-sm">Registration successful! You can now log in.</div>}
-        <button type="submit" disabled={loading} className="w-full bg-primary text-white py-2 rounded font-semibold hover:bg-primary/90 transition">
+        <button type="submit" disabled={loading} className="w-full bg-primary text-black dark:text-white py-2 rounded font-semibold hover:bg-primary/90 transition">
           {loading ? 'Registering...' : 'Register'}
         </button>
       </form>
