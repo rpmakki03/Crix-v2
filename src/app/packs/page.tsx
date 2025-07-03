@@ -5,12 +5,13 @@ import Image from 'next/image'
 import { CricketCard } from '@/components/cricket-card'
 import { packs, getRandomCards } from '@/lib/data'
 import { useUser } from '@/lib/user-context'
-import { Package, Sparkles, Wallet, Star } from 'lucide-react'
+import { Package, Sparkles, Wallet, Star, Info } from 'lucide-react'
 
 export default function PacksPage() {
   const [openedCards, setOpenedCards] = useState<any[]>([])
   const [isOpening, setIsOpening] = useState(false)
   const [selectedPack, setSelectedPack] = useState<string | null>(null)
+  const [infoPack, setInfoPack] = useState<string | null>(null)
   const { user, addCardToCollection } = useUser()
   const openedCardsRef = useRef<HTMLDivElement>(null)
 
@@ -60,6 +61,28 @@ export default function PacksPage() {
     }
   }
 
+  // Pack chance info
+  const packChances: Record<string, { label: string, value: string }[]> = {
+    basic: [
+      { label: 'Above 90 rated', value: '1%' },
+      { label: 'Below 90 rated', value: '99%' },
+    ],
+    standard: [
+      { label: '90-93 rated', value: '50%' },
+      { label: '94 rated', value: '24%' },
+      { label: '95 rated', value: '12%' },
+      { label: '96 rated', value: '6%' },
+      { label: '97 or above', value: '1%' },
+      { label: 'Below 90 rated', value: '2%' },
+    ],
+    ultimate: [
+      { label: 'Above 97 rated', value: '5%' },
+      { label: '98 or 99 rated', value: '2%' },
+      { label: '100 rated', value: '1%' },
+      { label: 'Always gives', value: '1 Legendary, 1 Epic, 1 Rare' },
+    ],
+  }
+
   return (
     <div className="space-y-12">
       {/* Header */}
@@ -87,6 +110,15 @@ export default function PacksPage() {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
         {packs.map((pack) => (
           <div key={pack.id} className="relative group">
+            {/* Info Button */}
+            <button
+              className="absolute top-2 right-2 z-10 bg-white/80 dark:bg-black/60 rounded-full p-1 hover:bg-primary/80 hover:text-white transition"
+              onClick={() => setInfoPack(pack.id)}
+              aria-label="Pack Info"
+              type="button"
+            >
+              <Info className="h-5 w-5" />
+            </button>
             <div className="relative w-full min-h-[420px] md:min-h-[480px] bg-gradient-to-br from-primary/20 to-secondary/20 rounded-2xl border-2 border-dashed border-primary/30 p-4 md:p-6 flex flex-col items-center justify-center">
               <Image
                 src={pack.image}
@@ -214,6 +246,31 @@ export default function PacksPage() {
           ))}
         </div>
       </div>
+
+      {/* Info Popup/Modal */}
+      {infoPack && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40">
+          <div className="bg-white dark:bg-zinc-900 rounded-xl shadow-xl p-6 w-full max-w-xs relative animate-in fade-in">
+            <button
+              className="absolute top-2 right-2 text-zinc-500 hover:text-zinc-900 dark:hover:text-white"
+              onClick={() => setInfoPack(null)}
+              aria-label="Close"
+              type="button"
+            >
+              ×
+            </button>
+            <h3 className="text-lg font-bold mb-3 text-center">{packs.find(p => p.id === infoPack)?.name} Odds</h3>
+            <ul className="space-y-2">
+              {packChances[infoPack].map((chance, idx) => (
+                <li key={idx} className="flex justify-between text-sm border-b last:border-b-0 pb-1">
+                  <span>{chance.label}</span>
+                  <span className="font-semibold">{chance.value}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      )}
     </div>
   )
 } 

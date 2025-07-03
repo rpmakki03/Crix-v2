@@ -23,7 +23,7 @@ export default function RegisterPage() {
       setError(error.message)
     } else {
       setSuccess(true)
-      setTimeout(() => router.push('/login'), 2000)
+      router.push('/login')
     }
   }
 
@@ -40,7 +40,7 @@ export default function RegisterPage() {
           <input type="password" value={password} onChange={e => setPassword(e.target.value)} required className="w-full border rounded px-3 py-2" />
         </div>
         {error && <div className="text-red-600 text-sm">{error}</div>}
-        {success && <div className="text-green-600 text-sm">Registration successful! Please check your email to confirm your account.</div>}
+        {success && <div className="text-green-600 text-sm">Registration successful! You can now log in.</div>}
         <button type="submit" disabled={loading} className="w-full bg-primary text-white py-2 rounded font-semibold hover:bg-primary/90 transition">
           {loading ? 'Registering...' : 'Register'}
         </button>

@@ -65,7 +65,7 @@ export function CricketCard({ card, className, onClick, draggable, onDragStart }
         
         <div className="text-sm text-gray-600 dark:text-gray-300">
           <p>{card.team}</p>
-          <p className="font-semibold text-green-600 dark:text-green-400">₹{card.price}</p>
+          <p className="font-semibold text-black dark:text-white text-right w-full">{card.price.toFixed(2)}</p>
         </div>
       </div>
     </div>

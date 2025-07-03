@@ -1,7 +1,7 @@
 "use client"
 
 import { createContext, useContext, useState, ReactNode, useEffect } from 'react'
-import { CricketCard } from './data'
+import { CricketCard, cricketCards } from './data'
 import { supabase } from './utils'
 
 interface User {
@@ -70,6 +70,29 @@ export function UserProvider({ children }: { children: ReactNode }) {
     }
   }, [])
 
+  // Fetch user cards from Supabase when user logs in (email type only)
+  useEffect(() => {
+    const fetchUserCards = async () => {
+      if (user && user.type === 'email' && user.email) {
+        const { data: { user: supaUser } } = await supabase.auth.getUser();
+        if (supaUser) {
+          const { data, error } = await supabase
+            .from('user_cards')
+            .select('card_id')
+            .eq('user_id', supaUser.id);
+          if (!error && data) {
+            // Map card_ids to full CricketCard objects
+            const cards = data
+              .map((row: any) => cricketCards.find(card => card.id === row.card_id))
+              .filter(Boolean);
+            setUserCards(cards as CricketCard[]);
+          }
+        }
+      }
+    };
+    fetchUserCards();
+  }, [user]);
+
   const connectUser = (type: 'metamask' | 'phantom' | 'email', address?: string) => {
     const newUser: User = {
       type,
@@ -94,13 +117,25 @@ export function UserProvider({ children }: { children: ReactNode }) {
     // Optionally, do not remove userCards from localStorage so they persist for next login
   }
 
-  const addCardToCollection = (card: CricketCard) => {
-    setUserCards(prev => [...prev, card])
-  }
+  const addCardToCollection = async (card: CricketCard) => {
+    setUserCards(prev => [...prev, card]);
+    if (user && user.type === 'email' && user.email) {
+      const { data: { user: supaUser } } = await supabase.auth.getUser();
+      if (supaUser) {
+        await supabase.from('user_cards').insert({ user_id: supaUser.id, card_id: card.id });
+      }
+    }
+  };
 
-  const removeCardFromCollection = (cardId: string) => {
-    setUserCards(prev => prev.filter(card => card.id !== cardId))
-  }
+  const removeCardFromCollection = async (cardId: string) => {
+    setUserCards(prev => prev.filter(card => card.id !== cardId));
+    if (user && user.type === 'email' && user.email) {
+      const { data: { user: supaUser } } = await supabase.auth.getUser();
+      if (supaUser) {
+        await supabase.from('user_cards').delete().eq('user_id', supaUser.id).eq('card_id', cardId);
+      }
+    }
+  };
 
   return (
     <UserContext.Provider value={{
