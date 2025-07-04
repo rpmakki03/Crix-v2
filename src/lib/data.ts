@@ -471,11 +471,19 @@ export function getRandomCards(count: number = 1, options?: {
 }): CricketCard[] {
   // Special case for Ultimate Pack: 3 cards, one of each rarity
   if (count === 3 && !options?.excludeRarities && !options?.guaranteedCard && !options?.guaranteedTeam) {
-    const legendaryCards = cricketCards.filter(card => card.rarity === 'legendary');
+    // 0.1% chance for a 100-rated legendary card
+    const legendary100 = cricketCards.filter(card => card.rarity === 'legendary' && card.rating === 100);
+    const legendaryOther = cricketCards.filter(card => card.rarity === 'legendary' && card.rating <= 96);
     const epicCards = cricketCards.filter(card => card.rarity === 'epic');
     const rareCards = cricketCards.filter(card => card.rarity === 'rare');
     const pick = (arr: CricketCard[]) => arr[Math.floor(Math.random() * arr.length)];
-    return [pick(legendaryCards), pick(epicCards), pick(rareCards)];
+    let legendaryCard;
+    if (legendary100.length > 0 && Math.random() < 0.001) {
+      legendaryCard = pick(legendary100);
+    } else {
+      legendaryCard = pick(legendaryOther);
+    }
+    return [legendaryCard, pick(epicCards), pick(rareCards)];
   }
   let availableCards = [...cricketCards];
   
