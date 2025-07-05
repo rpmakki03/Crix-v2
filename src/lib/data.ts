@@ -19,7 +19,6 @@ export interface Pack {
   guaranteedRarity?: string;
   guaranteedCard?: string;
   excludeRarities?: string[];
-  guaranteedTeam?: string;
 }
 
 export const cricketCards: CricketCard[] = [
@@ -304,6 +303,16 @@ export const cricketCards: CricketCard[] = [
     rating: 96
   },
   {
+    id: '42',
+    name: 'Sachin Tendulkar',
+    image: '/assets/Legends/Sachin Tendulkar 100.jpg',
+    price: 10000,
+    rarity: 'legendary',
+    position: 'Batsman',
+    team: 'Legends',
+    rating: 100
+  },
+  {
     id: '31',
     name: 'Shoaib Bahir',
     image: '/assets/England/Shoaib Bahir 76.jpg',
@@ -467,10 +476,9 @@ export const packs: Pack[] = [
 export function getRandomCards(count: number = 1, options?: {
   excludeRarities?: string[];
   guaranteedCard?: string;
-  guaranteedTeam?: string;
 }): CricketCard[] {
   // Special case for Ultimate Pack: 3 cards, one of each rarity
-  if (count === 3 && !options?.excludeRarities && !options?.guaranteedCard && !options?.guaranteedTeam) {
+  if (count === 3 && !options?.excludeRarities && !options?.guaranteedCard) {
     // 0.1% chance for a 100-rated legendary card
     const legendary100 = cricketCards.filter(card => card.rarity === 'legendary' && card.rating === 100);
     const legendaryOther = cricketCards.filter(card => card.rarity === 'legendary' && card.rating <= 96);
@@ -486,11 +494,6 @@ export function getRandomCards(count: number = 1, options?: {
     return [legendaryCard, pick(epicCards), pick(rareCards)];
   }
   let availableCards = [...cricketCards];
-  
-  // Filter by guaranteed team
-  if (options?.guaranteedTeam) {
-    availableCards = availableCards.filter(card => card.team === options.guaranteedTeam);
-  }
   
   // Filter out excluded rarities
   if (options?.excludeRarities) {
