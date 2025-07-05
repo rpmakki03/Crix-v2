@@ -31,8 +31,7 @@ export default function PacksPage() {
     setTimeout(() => {
       const options = {
         excludeRarities: pack.excludeRarities,
-        guaranteedCard: pack.guaranteedCard,
-        guaranteedTeam: pack.guaranteedTeam
+        guaranteedCard: pack.guaranteedCard
       }
       
       const newCards = getRandomCards(pack.cardCount, options)
@@ -152,12 +151,6 @@ export default function PacksPage() {
                     <span className="text-center">Guaranteed {pack.excludeRarities.length === 3 ? 'common' : pack.excludeRarities.join(', ')} player{pack.excludeRarities.length > 1 ? 's' : ''}</span>
                   </div>
                 )}
-                {pack.guaranteedTeam && (
-                  <div className="flex items-center gap-2 text-green-600 dark:text-green-400 justify-center">
-                    <Star className="h-3 w-3 md:h-4 md:w-4 flex-shrink-0" />
-                    <span className="text-center">Guaranteed {pack.guaranteedTeam} players</span>
-                  </div>
-                )}
               </div>
               
               <button
@@ -237,10 +230,6 @@ export default function PacksPage() {
                 {pack.excludeRarities && (
                   <li>• Guaranteed {pack.excludeRarities.length === 3 ? 'common' : pack.excludeRarities.join(', ')} player{pack.excludeRarities.length > 1 ? 's' : ''}</li>
                 )}
-                {pack.guaranteedTeam && (
-                  <li>• Guaranteed {pack.guaranteedTeam} players</li>
-                )}
-                <li>• {pack.description}</li>
               </ul>
             </div>
           ))}
