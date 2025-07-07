@@ -481,6 +481,16 @@ export const cricketCards: CricketCard[] = [
     position: 'Wicket-keeper',
     team: 'India',
     rating: 99
+  },
+  {
+    id: '48',
+    name: 'M S Dhoni',
+    image: '/assets/ms dhoni.jpg',
+    price: 10000,
+    rarity: 'legendary',
+    position: 'Wicket-keeper',
+    team: 'India',
+    rating: 100
   }
 ];
 

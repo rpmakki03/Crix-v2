@@ -1,7 +1,7 @@
 {
   "/page": "app/page.js",
-  "/market/page": "app/market/page.js",
   "/packs/page": "app/packs/page.js",
+  "/market/page": "app/market/page.js",
   "/collection/page": "app/collection/page.js",
   "/my-team/page": "app/my-team/page.js"
 }
