@@ -11,25 +11,15 @@
       "static/css/app/layout.css",
       "static/chunks/app/layout.js"
     ],
-    "/packs/page": [
+    "/leaderboard/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/packs/page.js"
-    ],
-    "/market/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/market/page.js"
+      "static/chunks/app/leaderboard/page.js"
     ],
     "/collection/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/collection/page.js"
-    ],
-    "/my-team/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/my-team/page.js"
     ]
   }
 }

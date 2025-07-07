@@ -55,6 +55,8 @@ export default function CollectionPage() {
   const epicCount = userCards.filter(card => card.rarity === 'epic').length
   const rareCount = userCards.filter(card => card.rarity === 'rare').length
   const commonCount = userCards.filter(card => card.rarity === 'common').length
+  // Calculate total points (sum of price for all cards)
+  const totalPoints = userCards.reduce((sum, card) => sum + (card.price || 0), 0);
 
   return (
     <div className="space-y-8">
@@ -72,7 +74,7 @@ export default function CollectionPage() {
           <Trophy className="h-6 w-6 text-primary" />
           <h3 className="text-xl font-semibold text-foreground">Collection Statistics</h3>
         </div>
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-6 gap-4">
           <div className="text-center">
             <div className="text-2xl font-bold text-primary">
               {totalCards}
@@ -102,6 +104,12 @@ export default function CollectionPage() {
               {commonCount}
             </div>
             <div className="text-sm text-muted-foreground">Common</div>
+          </div>
+          <div className="text-center">
+            <div className="text-2xl font-bold text-green-600">
+              {totalPoints}
+            </div>
+            <div className="text-sm text-muted-foreground">Total Points</div>
           </div>
         </div>
       </div>
