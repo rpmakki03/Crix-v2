@@ -41,7 +41,7 @@ export default function LeaderboardPage() {
         await supabase.from('leaderboard').upsert({
           name: userName,
           points: userPoints,
-        }, { onConflict: ['name'] });
+        }, { onConflict: 'name' });
       };
       upsertLeaderboard();
     }
