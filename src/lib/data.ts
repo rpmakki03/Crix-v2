@@ -441,6 +441,46 @@ export const cricketCards: CricketCard[] = [
     position: 'Batsman',
     team: 'India',
     rating: 99
+  },
+  {
+    id: '44',
+    name: 'M S Dhoni',
+    image: '/assets/Legends/M S Dhoni 100.jpg',
+    price: 10000,
+    rarity: 'legendary',
+    position: 'Wicket-keeper',
+    team: 'Legends',
+    rating: 100
+  },
+  {
+    id: '45',
+    name: 'M S Dhoni',
+    image: '/assets/Match Edition/M S Dhoni 96.jpg',
+    price: 5000,
+    rarity: 'legendary',
+    position: 'Wicket-keeper',
+    team: 'India',
+    rating: 96
+  },
+  {
+    id: '46',
+    name: 'M S Dhoni',
+    image: '/assets/Match Edition/M S Dhoni 97.jpg',
+    price: 5000,
+    rarity: 'legendary',
+    position: 'Wicket-keeper',
+    team: 'India',
+    rating: 97
+  },
+  {
+    id: '47',
+    name: 'M S Dhoni',
+    image: '/assets/Match Edition/M S Dhoni 99.jpg',
+    price: 5000,
+    rarity: 'legendary',
+    position: 'Wicket-keeper',
+    team: 'India',
+    rating: 99
   }
 ];
 

@@ -43,7 +43,7 @@ export default function HomePage() {
           {cricketCards
             .slice()
             .sort((a, b) => b.rating - a.rating)
-            .slice(0, 8)
+            .slice(0, 12)
             .map((card) => (
               <CricketCard key={card.id} card={card} />
             ))}
