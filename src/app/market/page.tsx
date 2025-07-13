@@ -1,34 +1,31 @@
-"use client"
-
-import { useState } from 'react'
-import { CricketCard } from '@/components/cricket-card'
-import { cricketCards } from '@/lib/data'
-import { Input } from '@/components/ui/input'
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
+"use client";
+import { useState } from "react";
+import { CricketCard } from '@/components/cricket-card';
+import { Input } from '@/components/ui/input';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { cricketCards } from '@/lib/data';
 
 export default function MarketPage() {
-  const [searchTerm, setSearchTerm] = useState('')
-  const [selectedRarity, setSelectedRarity] = useState('all')
-  const [selectedTeam, setSelectedTeam] = useState('all')
+  const [searchTerm, setSearchTerm] = useState('');
+  const [selectedRarity, setSelectedRarity] = useState('all');
+  const [selectedTeam, setSelectedTeam] = useState('all');
 
   const filteredCards = cricketCards.filter(card => {
     const matchesSearch = card.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         card.team.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         card.position.toLowerCase().includes(searchTerm.toLowerCase())
-    
-    const matchesRarity = selectedRarity === 'all' || card.rarity === selectedRarity
-    const matchesTeam = selectedTeam === 'all' || card.team === selectedTeam
-    
-    return matchesSearch && matchesRarity && matchesTeam
-  })
+      (card.team && card.team.toLowerCase().includes(searchTerm.toLowerCase())) ||
+      (card.position && card.position.toLowerCase().includes(searchTerm.toLowerCase()));
+    const matchesRarity = selectedRarity === 'all' || card.rarity === selectedRarity;
+    const matchesTeam = selectedTeam === 'all' || card.team === selectedTeam;
+    return matchesSearch && matchesRarity && matchesTeam;
+  });
 
-  const teams = Array.from(new Set(cricketCards.map(card => card.team)))
+  const teams = Array.from(new Set(cricketCards.map(card => card.team)));
 
   // Shuffle cards on each render
   function shuffle(array: typeof cricketCards) {
-    return array.slice().sort(() => Math.random() - 0.5)
+    return array.slice().sort(() => Math.random() - 0.5);
   }
-  const shuffledCards = shuffle(filteredCards)
+  const shuffledCards = shuffle(filteredCards);
 
   return (
     <div className="space-y-8">
@@ -94,5 +91,5 @@ export default function MarketPage() {
         </div>
       )}
     </div>
-  )
+  );
 } 

@@ -491,24 +491,93 @@ export const cricketCards: CricketCard[] = [
     position: 'Wicket-keeper',
     team: 'India',
     rating: 100
+  },
+  {
+    id: '49',
+    name: 'Mohd Shami',
+    image: '/assets/Match Edition/Mohd Shami 99.jpg',
+    price: 1000,
+    rarity: 'epic',
+    position: 'Bowler',
+    team: 'India',
+    rating: 99
+  },
+  {
+    id: '50',
+    name: 'Anil Kumble',
+    image: '/assets/Match Edition/Anil Kumble 100.jpg',
+    price: 5000,
+    rarity: 'legendary',
+    position: 'Bowler',
+    team: 'India',
+    rating: 100
+  },
+  {
+    id: '51',
+    name: 'Mitchell Starc',
+    image: '/assets/Match Edition/Mitchell starc 98.jpg',
+    price: 1000,
+    rarity: 'epic',
+    position: 'Bowler',
+    team: 'Australia',
+    rating: 98
+  },
+  {
+    id: '52',
+    name: 'James Anderson',
+    image: '/assets/Match Edition/James Anderson 97.jpg',
+    price: 1000,
+    rarity: 'epic',
+    position: 'Bowler',
+    team: 'England',
+    rating: 97
+  },
+  {
+    id: '53',
+    name: 'Kagiso Rabada',
+    image: '/assets/Match Edition/Kagiso Rabada 98.jpg',
+    price: 1000,
+    rarity: 'epic',
+    position: 'Bowler',
+    team: 'South Africa',
+    rating: 98
+  },
+  {
+    id: '54',
+    name: 'Stuart Broad',
+    image: '/assets/Match Edition/Stuart Broad 99.jpg',
+    price: 1000,
+    rarity: 'epic',
+    position: 'Bowler',
+    team: 'England',
+    rating: 99
+  },
+  {
+    id: '55',
+    name: 'Gautam Gambhir',
+    image: '/assets/Match Edition/gautamgambhir.png',
+    price: 1000,
+    rarity: 'epic',
+    position: 'Batsman',
+    team: 'India',
+    rating: 94
   }
 ];
 
 export const packs: Pack[] = [
   {
-    id: 'basic',
-    name: 'Basic Pack',
-    price: 99,
-    image: '/assets/packs/basic.jpg',
-    description: 'Guaranteed common player',
-    cardCount: 1,
-    excludeRarities: ['rare', 'epic', 'legendary']
-  },
-  {
     id: 'standard',
     name: 'Standard Pack',
-    price: 399,
+    price: 99,
     image: '/assets/packs/standard.jpg',
+    description: 'Guaranteed common player',
+    cardCount: 1
+  },
+  {
+    id: 'elite',
+    name: 'Elite Pack',
+    price: 399,
+    image: '/assets/packs/basic.jpg',
     description: '2 cards, any country',
     cardCount: 2
   },

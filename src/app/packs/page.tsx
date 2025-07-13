@@ -108,31 +108,35 @@ export default function PacksPage() {
       {/* Packs Display */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
         {packs.map((pack) => (
-          <div key={pack.id} className="relative group">
-            {/* Info Button */}
-            <button
-              className="absolute top-2 right-2 z-10 bg-white/80 dark:bg-black/60 rounded-full p-1 hover:bg-primary/80 hover:text-white transition"
-              onClick={() => setInfoPack(pack.id)}
-              aria-label="Pack Info"
-              type="button"
-            >
-              <Info className="h-5 w-5" />
-            </button>
-            <div className="relative w-full min-h-[420px] md:min-h-[480px] bg-gradient-to-br from-primary/20 to-secondary/20 rounded-2xl border-2 border-dashed border-primary/30 p-4 md:p-6 flex flex-col items-center justify-center">
-              <Image
-                src={pack.image}
-                alt={pack.name}
-                width={160}
-                height={160}
-                className="object-contain mb-3 md:mb-4 w-32 h-32 md:w-40 md:h-40"
-              />
+          <div key={pack.id} className="relative group flex flex-col items-center">
+            {/* Info Button on the image */}
+            <div className="relative w-full">
+              <button
+                className="absolute top-2 right-2 z-10 bg-white/80 dark:bg-black/60 rounded-full p-1 hover:bg-primary/80 hover:text-white transition"
+                onClick={() => setInfoPack(pack.id)}
+                aria-label="Pack Info"
+                type="button"
+              >
+                <Info className="h-5 w-5" />
+              </button>
+              <div className="relative w-full bg-gradient-to-br from-primary/20 to-secondary/20 rounded-2xl border-2 border-dashed border-primary/30 flex items-center justify-center" style={{ minHeight: 400 }}>
+                <Image
+                  src={pack.image}
+                  alt={pack.name}
+                  width={320}
+                  height={320}
+                  className="w-full h-80 object-contain"
+                />
+              </div>
+            </div>
+            {/* Info below the card image */}
+            <div className="w-full flex flex-col items-center mt-4">
               <h3 className="text-lg md:text-xl font-semibold text-foreground mb-2 text-center">
                 {pack.name}
               </h3>
               <p className="text-muted-foreground text-center mb-3 md:mb-4 text-sm md:text-base">
                 {pack.description}
               </p>
-              
               {/* Pack Features */}
               <div className="space-y-1 md:space-y-2 mb-4 md:mb-6 text-xs md:text-sm w-full">
                 <div className="flex items-center gap-2 justify-center">
@@ -152,7 +156,6 @@ export default function PacksPage() {
                   </div>
                 )}
               </div>
-              
               <button
                 onClick={() => handleBuyPack(pack.id)}
                 disabled={isOpening || !user}

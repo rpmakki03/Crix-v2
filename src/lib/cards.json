@@ -1,0 +1,91 @@
+[
+  {
+    "id": "1",
+    "name": "Virat Kohli",
+    "image": "/assets/Virat.jpg",
+    "price": 5000,
+    "rarity": "legendary",
+    "position": "Batsman",
+    "team": "India",
+    "rating": 94,
+    "nationality": "India"
+  },
+  {
+    "id": "2",
+    "name": "Rohit Sharma",
+    "image": "/assets/Rohit.jpg",
+    "price": 5000,
+    "rarity": "legendary",
+    "position": "Batsman",
+    "team": "India",
+    "rating": 94,
+    "nationality": "India"
+  },
+  {
+    "id": "3",
+    "name": "Jasprit Bumrah",
+    "image": "/assets/Bumrah.jpg",
+    "price": 1000,
+    "rarity": "epic",
+    "position": "Bowler",
+    "team": "India",
+    "rating": 92,
+    "nationality": "India"
+  },
+  {
+    "id": "5",
+    "name": "Mitchell Starc",
+    "image": "/assets/Starc.jpg",
+    "price": 1000,
+    "rarity": "epic",
+    "position": "Bowler",
+    "team": "Australia",
+    "rating": 94,
+    "nationality": "Australia"
+  },
+  {
+    "id": "6",
+    "name": "Jasii",
+    "image": "/assets/Jasii.jpg",
+    "price": 200,
+    "rarity": "common",
+    "position": "All-rounder",
+    "team": "Unknown",
+    "rating": 92,
+    "nationality": "Unknown"
+  },
+  {
+    "id": "7",
+    "name": "MS Dhoni",
+    "image": "/assets/msdhoni.png",
+    "price": 5000,
+    "rarity": "legendary",
+    "position": "Wicket-keeper",
+    "team": "India",
+    "rating": 95,
+    "nationality": "India"
+  },
+  {
+    "id": "8",
+    "name": "Gautam Gambhir",
+    "image": "/assets/gautamgambhir.png",
+    "price": 1000,
+    "rarity": "epic",
+    "position": "Batsman",
+    "team": "India",
+    "rating": 94,
+    "nationality": "India"
+  },
+  {
+    "id": "9",
+    "name": "James Anderson",
+    "image": "/assets/james anderson.png",
+    "price": 1000,
+    "rarity": "epic",
+    "position": "Bowler",
+    "team": "England",
+    "rating": 96,
+    "nationality": "England"
+  },
+  // ... (continue for all cards, using team as nationality)
+] 
